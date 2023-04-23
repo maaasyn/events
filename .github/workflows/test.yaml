@@ -3,7 +3,7 @@ name: Lint and Test Next.js Project
 on:
   pull_request:
     branches:
-      - master
+      - main
     types:
       - closed
 
