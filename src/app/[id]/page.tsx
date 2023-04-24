@@ -27,7 +27,10 @@ export default async function SpecificGathering(props: {
           alt={title}
           height={400}
           width={600}
-          layout="responsive"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
         />
       </div>
 
@@ -64,8 +67,11 @@ export default async function SpecificGathering(props: {
             <Image
               src={user.image}
               alt={user.name}
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400 ml-2">
