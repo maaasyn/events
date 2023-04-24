@@ -1,9 +1,8 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { FiMapPin, FiUsers } from "react-icons/fi";
 import { Inter } from "next/font/google";
 import { Event, getEvents } from "@/server/getEvents";
 import Link from "next/link";
-import LandingLoader from "@/app/loading";
 
 const inter = Inter({ subsets: ["latin"] });
 

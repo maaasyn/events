@@ -1,5 +1,5 @@
 import { getEvents } from "@/server/getEvents";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { FiMapPin, FiUsers } from "react-icons/fi";
 import markdownParser from "@wcj/markdown-to-html";
 
