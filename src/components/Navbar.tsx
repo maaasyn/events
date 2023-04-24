@@ -4,15 +4,17 @@ import { MdAccountCircle } from "react-icons/md";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-100 py-4 px-6 flex items-center justify-between">
-      <div className="text-gray-800 text-xl font-bold">MyLogo</div>
+    <nav className="bg-gray-100 dark:bg-gray-900 py-4 px-6 flex items-center justify-between">
+      <div className="text-gray-800 dark:text-white text-xl font-bold">
+        MyLogo
+      </div>
       <div className="flex-grow mx-8">
-        <div className="relative text-gray-600">
+        <div className="relative text-gray-600 dark:text-white">
           <input
             type="search"
             name="search"
             placeholder="Search for everything"
-            className="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-full"
+            className="bg-white dark:bg-gray-700 h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-full"
           />
           <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">
             <FaSearch />
@@ -20,7 +22,7 @@ const Navbar = () => {
         </div>
       </div>
       <div>
-        <button type="button" className="text-gray-800">
+        <button type="button" className="text-gray-800 dark:text-white">
           <MdAccountCircle size={30} />
         </button>
       </div>
