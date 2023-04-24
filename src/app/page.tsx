@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { faker } from "@faker-js/faker";
-import { FiUsers } from "react-icons/fi";
+import { FiMapPin, FiUsers } from "react-icons/fi";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,27 +22,35 @@ type Event = {
 
 const FeedTile = (props: Event) => {
   return (
-    <div className="flex flex-col w-fit p-2 rounded-lg">
-      <div className="relative w-full h-40 rounded-t-lg overflow-hidden">
+    <div className="flex flex-col w-full md:w-fit p-2 rounded-lg bg-white">
+      <div className="w-full rounded-t-lg overflow-hidden">
         <Image
           src={props.image}
           alt={props.title}
-          layout="fill"
-          objectFit="cover"
+          height={400}
+          width={600}
+          layout="responsive"
         />
       </div>
-      <div className="flex justify-between items-center mt-2">
+      <div className="flex flex-row justify-between items-center mt-4">
         <p className="text-sm text-gray-600">
-          {new Date(props.date).toLocaleString()}
+          {new Date(props.date).toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}
         </p>
         <div className="flex items-center gap-2">
           <FiUsers className="text-gray-600" />
           <p className="text-sm text-gray-600">{props.attendees}</p>
         </div>
       </div>
-      <h2 className="text-lg font-bold mt-2">{props.title}</h2>
+      <h2 className="text-lg font-bold mt-4">{props.title}</h2>
       <p className="text-sm text-gray-600 mt-2">{props.description}</p>
-      <p className="text-sm text-gray-600 mt-2">{props.location}</p>
+      <div className="flex items-center mt-2">
+        <FiMapPin className="text-gray-600 mr-2" />
+        <p className="text-sm text-gray-600">{props.location}</p>
+      </div>
       <div className="flex items-center mt-2">
         <div className="relative w-6 h-6 rounded-full overflow-hidden">
           <Image
@@ -61,9 +69,9 @@ const FeedTile = (props: Event) => {
 export default async function Feed() {
   const events = await getMockedEvents();
   return (
-    <main className="px-4">
+    <main className="px-4 xl:px-8 2xl:px-24">
       <h1 className="text-2xl font-bold mt-4">Feed</h1>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-4">
+      <ul className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-2 mt-4">
         {events.map((event, idx) => (
           <li key={idx}>
             <FeedTile {...event} />
