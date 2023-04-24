@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdAccountCircle } from "react-icons/md";
@@ -6,7 +7,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-100 dark:bg-gray-900 py-4 px-6 flex items-center justify-between">
       <div className="text-gray-800 dark:text-white text-xl font-bold">
-        MyLogo
+        <Link href={"/"}>MyLogo</Link>
       </div>
       <div className="flex-grow mx-8">
         <div className="relative text-gray-600 dark:text-white">

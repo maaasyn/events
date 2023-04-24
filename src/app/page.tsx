@@ -2,6 +2,8 @@ import Image from "next/image";
 import { FiMapPin, FiUsers } from "react-icons/fi";
 import { Inter } from "next/font/google";
 import { Event, getEvents } from "@/server/getEvents";
+import Link from "next/link";
+import LandingLoader from "@/app/loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +35,7 @@ const FeedTile = (props: Event) => {
         </div>
       </div>
       <h2 className="text-xl font-bold mt-2 text-gray-800 dark:text-white">
-        {props.title}
+        <Link href={`/${props.id}`}>{props.title}</Link>
       </h2>
       <p className="text-sm text-gray-600 mt-2 dark:text-gray-400">
         {props.description}
