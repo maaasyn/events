@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { FiMapPin, FiUsers } from "react-icons/fi";
 import { Inter } from "next/font/google";
 import { Event, getEvents } from "@/server/getEvents";
@@ -10,13 +10,7 @@ const FeedTile = (props: Event) => {
   return (
     <div className="flex flex-col w-full md:w-fit p-2 rounded-lg bg-white dark:bg-gray-800">
       <div className="w-full rounded-t-lg overflow-hidden">
-        <Image
-          src={props.image}
-          alt={props.title}
-          height={400}
-          width={600}
-          layout="responsive"
-        />
+        <Image src={props.image} alt={props.title} height={400} width={600} />
       </div>
       <div className="flex flex-row justify-between items-center mt-4">
         <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -50,8 +44,11 @@ const FeedTile = (props: Event) => {
           <Image
             src={props.user.image}
             alt={props.user.name}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "cover",
+            }}
           />
         </div>
         <p className="text-sm text-gray-600 ml-2 dark:text-gray-400">
