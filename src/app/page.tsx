@@ -1,107 +1,98 @@
 import Image from "next/image";
+import { faker } from "@faker-js/faker";
+import { FiUsers } from "react-icons/fi";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer">
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+type Event = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+  location: string;
+  attendees: number;
+  user: {
+    id: string;
+    name: string;
+    image: string;
+  };
+};
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
+const FeedTile = (props: Event) => {
+  return (
+    <div className="flex flex-col w-fit p-2 rounded-lg">
+      <div className="relative w-full h-40 rounded-t-lg overflow-hidden">
         <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          src={props.image}
+          alt={props.title}
+          layout="fill"
+          objectFit="cover"
         />
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer">
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="flex justify-between items-center mt-2">
+        <p className="text-sm text-gray-600">
+          {new Date(props.date).toLocaleString()}
+        </p>
+        <div className="flex items-center gap-2">
+          <FiUsers className="text-gray-600" />
+          <p className="text-sm text-gray-600">{props.attendees}</p>
+        </div>
       </div>
+      <h2 className="text-lg font-bold mt-2">{props.title}</h2>
+      <p className="text-sm text-gray-600 mt-2">{props.description}</p>
+      <p className="text-sm text-gray-600 mt-2">{props.location}</p>
+      <div className="flex items-center mt-2">
+        <div className="relative w-6 h-6 rounded-full overflow-hidden">
+          <Image
+            src={props.user.image}
+            alt={props.user.name}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <p className="text-sm text-gray-600 ml-2">{props.user.name}</p>
+      </div>
+    </div>
+  );
+};
+
+export default async function Feed() {
+  const events = await getMockedEvents();
+  return (
+    <main className="px-4">
+      <h1 className="text-2xl font-bold mt-4">Feed</h1>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-4">
+        {events.map((event, idx) => (
+          <li key={idx}>
+            <FeedTile {...event} />
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
+
+const generateRandomEvent = (props?: { override: Event }): Event => {
+  const result: Event = {
+    id: props?.override?.id ?? faker.datatype.uuid(),
+    title: props?.override?.title ?? faker.lorem.words(3),
+    description: props?.override?.description ?? faker.lorem.words(10),
+    image: props?.override?.image ?? faker.image.imageUrl(400, 300),
+    date: props?.override?.date ?? faker.date.future().toISOString(),
+    location: props?.override?.location ?? faker.address.city(),
+    attendees: props?.override?.attendees ?? faker.datatype.number(100),
+    user: {
+      id: props?.override?.user?.id ?? faker.datatype.uuid(),
+      name: props?.override?.user?.name ?? faker.name.fullName(),
+      image: props?.override?.user?.image ?? faker.image.imageUrl(20, 20),
+    },
+  };
+  return result;
+};
+
+const getMockedEvents = async () => {
+  const events = Array.from({ length: 20 }, () => generateRandomEvent());
+  return events;
+};
