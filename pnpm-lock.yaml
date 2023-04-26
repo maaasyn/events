@@ -4,10 +4,17 @@ dependencies:
   "@faker-js/faker":
     specifier: 7.6.0
     version: 7.6.0
+<<<<<<< HEAD
   "@types/node":
     specifier: 18.16.1
     version: 18.16.1
   "@types/react":
+=======
+  '@types/node':
+    specifier: 18.16.1
+    version: 18.16.1
+  '@types/react':
+>>>>>>> 14428de (fix(deps): update dependency @types/node to v18.16.1 (#22))
     specifier: 18.2.0
     version: 18.2.0
   "@types/react-dom":
@@ -457,10 +464,14 @@ packages:
     dev: false
 
   /@types/node@18.16.1:
+<<<<<<< HEAD
     resolution:
       {
         integrity: sha512-DZxSZWXxFfOlx7k7Rv4LAyiMroaxa3Ly/7OOzZO8cBNho0YzAi4qlbrx8W27JGqG57IgR/6J7r+nOJWw6kcvZA==,
       }
+=======
+    resolution: {integrity: sha512-DZxSZWXxFfOlx7k7Rv4LAyiMroaxa3Ly/7OOzZO8cBNho0YzAi4qlbrx8W27JGqG57IgR/6J7r+nOJWw6kcvZA==}
+>>>>>>> 14428de (fix(deps): update dependency @types/node to v18.16.1 (#22))
     dev: false
 
   /@types/parse5@6.0.3:
