@@ -22,6 +22,7 @@ const Navbar = async () => {
           </button>
         </div>
       </div>
+      {/* @ts-expect-error Server Component */}
       <AvatarSignIn />
     </nav>
   );
