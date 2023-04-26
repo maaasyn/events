@@ -62,13 +62,6 @@ devDependencies:
     version: 0.2.7(prettier@2.8.8)
 
 packages:
-  /@alloc/quick-lru@5.2.0:
-    resolution:
-      {
-        integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==,
-      }
-    engines: { node: ">=10" }
-
   /@babel/runtime@7.21.0:
     resolution:
       {
@@ -400,7 +393,7 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@tailwindcss/typography@0.5.9(tailwindcss@3.3.2):
+  /@tailwindcss/typography@0.5.9(tailwindcss@3.3.1):
     resolution:
       {
         integrity: sha512-t8Sg3DyynFysV9f4JDOVISGsjazNb48AeIYQwcL+Bsq5uf4RYL75C1giZ43KISjeDGBaTN3Kxh7Xj/vRSMJUUg==,
@@ -1030,7 +1023,6 @@ packages:
       {
         integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==,
       }
-    dev: false
 
   /comma-separated-tokens@2.0.3:
     resolution:
@@ -3869,12 +3861,12 @@ packages:
       }
     engines: { node: ">= 6" }
 
-  /postcss-import@15.1.0(postcss@8.4.23):
+  /postcss-import@14.1.0(postcss@8.4.23):
     resolution:
       {
-        integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==,
+        integrity: sha512-flwI+Vgm4SElObFVPpTIT7SU7R3qk2L7PyduMcokiaVKuWv9d/U+Gm/QAd8NDLuykTWTkcrjOeD2Pp1rMeBTGw==,
       }
-    engines: { node: ">=14.0.0" }
+    engines: { node: ">=10.0.0" }
     peerDependencies:
       postcss: ^8.0.0
     dependencies:
@@ -3895,12 +3887,12 @@ packages:
       camelcase-css: 2.0.1
       postcss: 8.4.23
 
-  /postcss-load-config@4.0.1(postcss@8.4.23):
+  /postcss-load-config@3.1.4(postcss@8.4.23):
     resolution:
       {
-        integrity: sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==,
+        integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==,
       }
-    engines: { node: ">= 14" }
+    engines: { node: ">= 10" }
     peerDependencies:
       postcss: ">=8.0.9"
       ts-node: ">=9.0.0"
@@ -3914,10 +3906,10 @@ packages:
       postcss: 8.4.23
       yaml: 2.2.2
 
-  /postcss-nested@6.0.1(postcss@8.4.23):
+  /postcss-nested@6.0.0(postcss@8.4.23):
     resolution:
       {
-        integrity: sha512-mEp4xPMi5bSWiMbsgoPfcP74lsWLHkQbZc3sY+jWYd65CUwXrUaTp0fmNpa01ZcETKlIgUdFN/MpS2xZtqL9dQ==,
+        integrity: sha512-0DkamqrPcmkBDsLn+vQDIrtkSbNkv5AD/M322ySo9kqFkCIYklym2xEmWkwo+Y3/qZo34tzEPNUw4y7yMCdv5w==,
       }
     engines: { node: ">=12.0" }
     peerDependencies:
@@ -4677,15 +4669,14 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /tailwindcss@3.3.2:
+  /tailwindcss@3.3.1(postcss@8.4.23):
     resolution:
       {
-        integrity: sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==,
+        integrity: sha512-Vkiouc41d4CEq0ujXl6oiGFQ7bA3WEhUZdTgXAhtKxSy49OmKs8rEfQmupsfF0IGW8fv2iQkp1EVUuapCFrZ9g==,
       }
-    engines: { node: ">=14.0.0" }
+    engines: { node: ">=12.13.0" }
     hasBin: true
     dependencies:
-      "@alloc/quick-lru": 5.2.0
       arg: 5.0.2
       chokidar: 3.5.3
       didyoumean: 1.2.2
@@ -5134,12 +5125,12 @@ packages:
       }
     dev: false
 
-  /yaml@2.2.2:
+  /yaml@1.10.2:
     resolution:
       {
-        integrity: sha512-CBKFWExMn46Foo4cldiChEzn7S7SRV+wqiluAb6xmueD/fGyRHIhX8m14vVGgeFWjN540nKCNVj6P21eQjgTuA==,
+        integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==,
       }
-    engines: { node: ">= 14" }
+    engines: { node: ">= 6" }
 
   /yocto-queue@0.1.0:
     resolution:
