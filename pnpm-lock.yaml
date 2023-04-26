@@ -52,7 +52,6 @@ dependencies:
   zod:
     specifier: 3.21.4
     version: 3.21.4
-
 devDependencies:
   '@tailwindcss/typography':
     specifier: 0.5.9
