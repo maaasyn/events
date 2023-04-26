@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import { FaSearch } from "react-icons/fa";
-import { MdAccountCircle } from "react-icons/md";
+import { AvatarSignIn } from "@/components/AvatarSignIn";
 
-const Navbar = () => {
+const Navbar = async () => {
   return (
     <nav className="bg-gray-100 dark:bg-gray-900 py-4 px-6 flex items-center justify-between">
       <div className="text-gray-800 dark:text-white text-xl font-bold">
@@ -22,11 +22,8 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <div>
-        <button type="button" className="text-gray-800 dark:text-white">
-          <MdAccountCircle size={30} />
-        </button>
-      </div>
+      {/* @ts-expect-error Server Component */}
+      <AvatarSignIn />
     </nav>
   );
 };
