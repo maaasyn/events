@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { FaSearch } from "react-icons/fa";
-import { AvatarSignIn } from "@/components/AvatarSignIn";
+import { UserAvatar } from "@/components/UserAvatar";
 
 const Navbar = async () => {
   return (
@@ -23,7 +23,7 @@ const Navbar = async () => {
         </div>
       </div>
       {/* @ts-expect-error Server Component */}
-      <AvatarSignIn />
+      <UserAvatar />
     </nav>
   );
 };
