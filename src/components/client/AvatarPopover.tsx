@@ -25,7 +25,7 @@ export const AvatarPopOver = (props: {
                 alt="Avatar"
               />
             ) : (
-              <MdAccountCircle onClick={() => signIn()} size={30} />
+              <MdAccountCircle size={30} />
             )}
           </button>
         </PopoverTrigger>
