@@ -16,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} dark:bg-gray-800`}>
+      <body
+        // suppressHydrationWarning={true}
+        className={`${inter.className} dark:bg-gray-800`}>
         {/* @ts-expect-error Server Component */}
         <Navbar />
         {children}
