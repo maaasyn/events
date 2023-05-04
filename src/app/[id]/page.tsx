@@ -1,7 +1,7 @@
 import { getEvents } from "@/server/getEvents";
 import Image from "next/image";
 import { FiMapPin, FiUsers } from "react-icons/fi";
-import markdownParser from "@wcj/markdown-to-html";
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 export default async function SpecificGathering(props: {
   params: {
@@ -16,7 +16,7 @@ export default async function SpecificGathering(props: {
     attendees,
     user,
     description,
-    content,
+    markdown,
   } = await getEvent(props.params.id);
 
   return (
@@ -92,7 +92,8 @@ export default async function SpecificGathering(props: {
       <div className="p-4 md:w-2/3">
         <div className="bg-white dark:bg-gray-800">
           <div className="prose dark:prose-invert max-w-none">
-            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            {/* @ts-expect-error Async Server Component Workaround */}
+            <MDXRemote source={markdown} />
           </div>
         </div>
       </div>
@@ -132,6 +133,8 @@ tigres!
 - In quis ferentem dictis cernimus Iapygiam
 - Inclusas trepidas ut quercus
 
+![kotki](https://www.dolina-noteci.pl/data/include/img/news/1648545312.jpg)
+
 *Cessante tenuavit* reddidit carpe adpellavere haut interea, somno seque, quid.
 Ama trepidamque vocis referebam interrita in orbem deformes modicisque fugientem
 et. Loton a crinem meoque, ut risisse proxima; leve somnos. Spem mollibus videre
@@ -140,7 +143,6 @@ accedere Cerbereos [locum](http://www.mea.org/), manifestaque, Stygio.
 Acta excussit quondam **fragor**. Dextera in sitae solebat, est fuerat, ignotis
 olim: inhaeserat excepto Phrygiaeque casus circumlitus nubemque aderat!`;
   const [event] = await getEvents();
-  const content = markdownParser(markdown);
 
-  return { ...event, content: content };
+  return { ...event, markdown };
 };
