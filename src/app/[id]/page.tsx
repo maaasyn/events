@@ -1,27 +1,23 @@
-import { getEvents } from "@/server/getEvents";
 import Image from "next/image";
-import { FiMapPin, FiUsers } from "react-icons/fi";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { Metadata } from "next";
+import { getEvents } from "@/server/getEvents";
+import { FiCalendar, FiMapPin, FiUsers } from "react-icons/fi";
 
-export default async function SpecificGathering(props: {
-  params: {
-    id: string;
-  };
-}) {
-  const {
-    title,
-    image,
-    date,
-    location,
-    attendees,
-    user,
-    description,
-    markdown,
-  } = await getEvent(props.params.id);
+const EventCard = (props: Awaited<ReturnType<typeof getEvent>>) => {
+  const { title, image, date, location, attendees, user, description } = props;
 
   return (
-    <div className="flex flex-col items-center w-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
-      <div className="w-full md:w-2/3">
+    <div className="w-full md:px-4 grid grid-cols-1 grid-rows-[repeat(3,_minmax(0,_auto))] md:grid-rows-[repeat(2,_minmax(0,_auto))] md:gap-4 md:max-w-screen-lg auto-rows-min auto-cols-min md:my-4 my-2 ">
+      {/* Title */}
+      <div className="col-start-1 row-start-1 md:grid-cols-2 col-span-1 md:col-span-2 flex md:justify-start">
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-white my-2">
+          {title}
+        </h1>
+      </div>
+
+      {/* Image */}
+      <div className="col-start-1 row-start-2">
         <Image
           src={image}
           alt={title}
@@ -34,18 +30,21 @@ export default async function SpecificGathering(props: {
         />
       </div>
 
-      <div className="flex flex-col justify-between p-4 w-full md:w-2/3">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-white my-2">
-          {title}
-        </h1>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          {new Date(date).toLocaleDateString("en-US", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })}
-        </p>
+      {/* Details */}
+      <div className="col-start-1 row-start-3 md:col-start-2 md:row-start-2 flex flex-col justify-center p-4 md:max-w-screen-xxs md:w-60">
+        {/* Date */}
+        <div className="flex items-center my-2">
+          <FiCalendar className="text-gray-600 dark:text-gray-400 mr-2" />
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {new Date(date).toLocaleDateString("en-US", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </p>
+        </div>
 
+        {/* Attendees */}
         <div className="flex items-center my-2">
           <FiUsers className="text-gray-600 dark:text-gray-400 mr-2" />
           <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -53,15 +52,18 @@ export default async function SpecificGathering(props: {
           </p>
         </div>
 
+        {/* Description */}
         <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
           {description}
         </p>
 
+        {/* Location */}
         <div className="flex items-center my-2">
           <FiMapPin className="text-gray-600 dark:text-gray-400 mr-2" />
           <p className="text-sm text-gray-600 dark:text-gray-400">{location}</p>
         </div>
 
+        {/* User */}
         <div className="flex items-center my-2">
           <div className="relative w-8 h-8 rounded-full overflow-hidden">
             <Image
@@ -79,8 +81,21 @@ export default async function SpecificGathering(props: {
           </p>
         </div>
       </div>
+    </div>
+  );
+};
 
-      <div className="flex flex-row w-full bg-gray-100 dark:bg-gray-900 p-4">
+export default async function SpecificGathering(props: {
+  params: {
+    id: string;
+  };
+}) {
+  const event = await getEvent(props.params.id);
+
+  return (
+    <div className="flex flex-col items-center w-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
+      <EventCard {...event} />
+      <div className="flex flex-row w-full justify-evenly bg-gray-100 dark:bg-gray-900 p-4">
         <h2 className="text-m text-gray-800 dark:text-white mr-4">Comments</h2>
         <h2 className="text-m text-gray-800 dark:text-white mr-4">FAQ</h2>
         <h2 className="text-m text-gray-800 dark:text-white mr-4">Updates</h2>
@@ -93,7 +108,7 @@ export default async function SpecificGathering(props: {
         <div className="bg-white dark:bg-gray-800">
           <div className="prose dark:prose-invert max-w-none">
             {/* @ts-expect-error Async Server Component Workaround */}
-            <MDXRemote source={markdown} />
+            <MDXRemote source={event.markdown} />
           </div>
         </div>
       </div>
@@ -146,3 +161,8 @@ olim: inhaeserat excepto Phrygiaeque casus circumlitus nubemque aderat!`;
 
   return { ...event, markdown };
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const [event] = await getEvents();
+  return { title: event.title, description: event.description };
+}
