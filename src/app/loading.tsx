@@ -5,7 +5,7 @@ const LandingLoader = () => {
   return (
     <main className="px-4 xl:px-8 2xl:px-24 dark:text-white">
       <h1 className="text-2xl font-bold mt-4">Feed</h1>
-      <ul className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-2 mt-4">
+      <ul className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-4">
         {array.map((_, idx) => (
           <li key={idx}>
             <div className="flex flex-col w-full md:w-fit p-2 rounded-lg bg-white dark:bg-gray-800 animate-pulse">
