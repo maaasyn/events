@@ -51,13 +51,15 @@ export const AvatarPopOver = (props: {
           )}
 
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <User className="mr-2 h-4 w-4" />
-              <span>Profile ❌</span>
+            <DropdownMenuItem asChild>
+              <Link href={"/profile"}>
+                <User className="mr-2 h-4 w-4" />
+                <span>Profile</span>
+              </Link>
             </DropdownMenuItem>
 
             <DropdownMenuItem asChild>
-              <Link href="/create">
+              <Link href="/create-gather">
                 <PlusCircle className="mr-2 h-4 w-4" />
                 <span>Create gathering</span>
               </Link>
