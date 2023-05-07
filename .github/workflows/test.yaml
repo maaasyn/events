@@ -7,6 +7,15 @@ on:
 
 jobs:
   lint-and-test:
+    # TODO: find me a better home
+    env:
+      PORT: 4000
+      GITHUB_ID: Iv1.c9e58e887e6be3b1
+      GITHUB_SECRET: f9f81d19c270e556c9fccfbe0d737f28fc1fd9a1
+      NEXTAUTH_SECRET: dpi+0UO4upbANx7X7VVSwd79HTPJJu+pHBUfED4ILT0=
+      NEXTAUTH_URL: http://localhost:4000
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432
+      SHADOW_DATABASE_URL: postgres://postgres:postgres@localhost:5432
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
