@@ -1,6 +1,13 @@
 import { Editor } from "@/components/client/Editor";
+import { getCurrentUser } from "@/lib/session";
+import { redirect } from "next/navigation";
 
-export default function CreateGather() {
+export default async function CreateGather() {
+  const user = await getCurrentUser();
+  if (!user) {
+    redirect("/login");
+  }
+
   return (
     <div className="flex flex-col items-center justify-center min-h-fit py-2">
       <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
