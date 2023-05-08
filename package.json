@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo --port 4000",
+    "dev": "next dev --port 4000",
     "build": "next build",
     "start": "next start --port 4000",
     "lint": "next lint",
-    "test": "tsc --noEmit"
+    "test": "tsc --noEmit",
+    "prisma:push": "prisma db push"
   },
   "dependencies": {
     "@faker-js/faker": "7.6.0",

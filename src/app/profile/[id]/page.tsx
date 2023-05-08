@@ -1,4 +1,6 @@
+import { UserCard } from "@/components/UserCard";
 import { PrismaClient } from "@prisma/client";
+import React from "react";
 
 const ProfilePage = async (props: { id: string }) => {
   const user = await new PrismaClient().user.findFirst({
@@ -7,13 +9,14 @@ const ProfilePage = async (props: { id: string }) => {
     },
   });
   return (
-    <div>
-      <h1>Profile</h1>
-      <p>Email: {user?.email}</p>
-      <p>Username: {user?.name}</p>
-      <p>Image: {user?.image}</p>
-      <p>Id: {user?.id}</p>
-    </div>
+    <UserCard
+      user={{
+        email: user?.email,
+        id: user?.id,
+        image: user?.image,
+        name: user?.name,
+      }}
+    />
   );
 };
 export default ProfilePage;

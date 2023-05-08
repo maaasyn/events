@@ -1,7 +1,5 @@
 import Image from "next/image";
-import { FiMapPin, FiUsers } from "react-icons/fi";
-import { Event, getEvents } from "@/server/getEvents";
-import Link from "next/link";
+import { getEvents } from "@/server/getEvents";
 import { faker } from "@faker-js/faker";
 import {
   Select,
@@ -11,8 +9,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import { FeedTile } from "@/components/client/FeedTile";
 
-export default async function Feed() {
+export default async function LandingFeed() {
   const events = await getEvents();
   const imageSrc = faker.image.abstract(600, 400);
   return (
@@ -26,9 +25,13 @@ export default async function Feed() {
             Tickets, Events, People and Business in one place
           </p>
         </div>
-        <div className="rounded-lg">
-          <Image src={imageSrc} alt="Landing Image" width={600} height={400} />
-        </div>
+        <Image
+          className="rounded-lg"
+          src={imageSrc}
+          alt="Landing Image"
+          width={600}
+          height={400}
+        />
       </div>
       <Separator className="my-6" />
       <div className="flex flex-row items-center my-4">
@@ -76,58 +79,3 @@ export default async function Feed() {
     </main>
   );
 }
-
-const FeedTile = (props: Event) => {
-  return (
-    <>
-      <div className="flex flex-col w-full md:w-fit p-2 rounded-lg bg-white dark:bg-gray-800">
-        <div className="w-full rounded-t-lg overflow-hidden">
-          <Image src={props.image} alt={props.title} height={400} width={600} />
-        </div>
-        <div className="flex flex-row justify-between items-center mt-4">
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            {new Date(props.date).toLocaleDateString("en-US", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </p>
-          <div className="flex items-center gap-2">
-            <FiUsers className="text-gray-600 dark:text-gray-400" />
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              {props.attendees}
-            </p>
-          </div>
-        </div>
-        <h2 className="text-xl font-bold mt-2 text-gray-800 dark:text-white">
-          <Link href={`/${props.id}`}>{props.title}</Link>
-        </h2>
-        <p className="text-sm text-gray-600 mt-2 dark:text-gray-400">
-          {props.description}
-        </p>
-        <div className="flex items-center mt-2">
-          <FiMapPin className="text-gray-600 dark:text-gray-400 mr-2" />
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            {props.location}
-          </p>
-        </div>
-        <div className="flex items-center mt-2">
-          <div className="relative w-6 h-6 rounded-full overflow-hidden">
-            <Image
-              src={props.user.image}
-              alt={props.user.name}
-              fill
-              sizes="100vw"
-              style={{
-                objectFit: "cover",
-              }}
-            />
-          </div>
-          <p className="text-sm text-gray-600 ml-2 dark:text-gray-400">
-            {props.user.name}
-          </p>
-        </div>
-      </div>
-    </>
-  );
-};

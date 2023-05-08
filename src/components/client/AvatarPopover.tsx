@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { getCurrentUser } from "@/lib/session";
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { LogOut, PlusCircle, Github, User } from "lucide-react";
+import { LogOut, PlusCircle, Github, User, Newspaper } from "lucide-react";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 
@@ -55,6 +55,13 @@ export const AvatarPopOver = (props: {
               <Link href={"/profile"}>
                 <User className="mr-2 h-4 w-4" />
                 <span>Profile</span>
+              </Link>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem asChild>
+              <Link href={"/feed"}>
+                <Newspaper className="mr-2 h-4 w-4" />
+                <span>Feed</span>
               </Link>
             </DropdownMenuItem>
 
