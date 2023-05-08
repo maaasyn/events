@@ -7,7 +7,7 @@ const Navbar = async () => {
   return (
     <nav className="bg-gray-100 dark:bg-gray-900 py-4 px-6 flex items-center justify-between">
       <div className="text-gray-800 dark:text-white text-xl font-bold">
-        <Link href={"/"}>MyLogo</Link>
+        <Link href={"/"}>Connectoo</Link>
       </div>
       <div className="flex-grow mx-8">
         <div className="relative text-gray-600 dark:text-white">

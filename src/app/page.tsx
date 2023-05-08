@@ -1,15 +1,9 @@
 import Image from "next/image";
 import { getEvents } from "@/server/getEvents";
 import { faker } from "@faker-js/faker";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { FeedTile } from "@/components/client/FeedTile";
+import { SmartSearch } from "@/components/SmartSearch";
 
 export default async function LandingFeed() {
   const events = await getEvents();
@@ -34,41 +28,7 @@ export default async function LandingFeed() {
         />
       </div>
       <Separator className="my-6" />
-      <div className="flex flex-row items-center my-4">
-        <p className="px-2">Show me</p>
-        <Select>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="All" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="light">Fairs</SelectItem>
-            <SelectItem value="dark">Conferences</SelectItem>
-            <SelectItem value="system">All</SelectItem>
-          </SelectContent>
-        </Select>
-        <p className="px-2">from</p>
-        <Select>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="World" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="light">World</SelectItem>
-            <SelectItem value="dark">Poland</SelectItem>
-            <SelectItem value="system">UK</SelectItem>
-          </SelectContent>
-        </Select>
-        <p className="px-2">sorted by</p>
-        <Select>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Magic" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="light">Magic</SelectItem>
-            <SelectItem value="dark">Attendees</SelectItem>
-            <SelectItem value="system">New & Noteworthy</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+      <SmartSearch />
       <ul className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-4">
         {events.map((event, idx) => (
           <li key={idx}>
