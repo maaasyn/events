@@ -4,6 +4,7 @@ import "./src/env.mjs";
 const nextConfig = {
   experimental: {
     appDir: true,
+    serverActions: true,
   },
   images: {
     domains: ["images.unsplash.com", "picsum.photos", "loremflickr.com"],
