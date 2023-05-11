@@ -109,6 +109,9 @@ dependencies:
   typescript:
     specifier: 5.1.0-dev.20230507
     version: 5.1.0-dev.20230507
+  zact:
+    specifier: 0.0.2
+    version: 0.0.2(next@13.4.1)
   zod:
     specifier: 3.21.4
     version: 3.21.4
@@ -5737,6 +5740,26 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: false
+
+  /zact@0.0.2(next@13.4.1):
+    resolution: {integrity: sha512-mVXKgUI9FOv9dkCuY2a6yKzFFWRhkvdBlVXVa/FCXDHB3kkqOv4N59AGwC2lHJdGxpT9gX9VzHX9Pxei9fdoJA==}
+    peerDependencies:
+      next: ^13.2.5-canary.x
+    dependencies:
+      next: 13.4.1(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      zod: 3.21.4
+      zod-validation-error: 1.3.0(zod@3.21.4)
+    dev: false
+
+  /zod-validation-error@1.3.0(zod@3.21.4):
+    resolution: {integrity: sha512-4WoQnuWnj06kwKR4A+cykRxFmy+CTvwMQO5ogTXLiVx1AuvYYmMjixh7sbkSsQTr1Fvtss6d5kVz8PGeMPUQjQ==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      zod: ^3.18.0
+    dependencies:
+      zod: 3.21.4
     dev: false
 
   /zod@3.21.4:
