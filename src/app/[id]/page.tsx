@@ -11,7 +11,7 @@ const EventCard = (props: Awaited<ReturnType<typeof getEvent>>) => {
     <div className="w-full md:px-4 grid grid-cols-1 grid-rows-[repeat(3,_minmax(0,_auto))] md:grid-rows-[repeat(2,_minmax(0,_auto))] md:gap-4 md:max-w-screen-lg auto-rows-min auto-cols-min md:my-4 my-2 ">
       {/* Title */}
       <div className="col-start-1 row-start-1 md:grid-cols-2 col-span-1 md:col-span-2 flex md:justify-start">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-white my-2">
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-white my-2 ml-4 md:ml-0">
           {title}
         </h1>
       </div>
@@ -93,9 +93,9 @@ export default async function SpecificGathering(props: {
   const event = await getEvent(props.params.id);
 
   return (
-    <div className="flex flex-col items-center w-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
+    <div className="flex flex-col items-center w-full bg-white dark:bg-gray-800 rounded-lg">
       <EventCard {...event} />
-      <div className="flex flex-row w-full justify-evenly bg-gray-100 dark:bg-gray-900 p-4">
+      <div className="flex flex-row w-full xs:justify-evenly bg-gray-100 dark:bg-gray-900 p-4 overflow-x-auto">
         <h2 className="text-m text-gray-800 dark:text-white mr-4">Comments</h2>
         <h2 className="text-m text-gray-800 dark:text-white mr-4">FAQ</h2>
         <h2 className="text-m text-gray-800 dark:text-white mr-4">Updates</h2>

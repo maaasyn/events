@@ -71,7 +71,7 @@ export default async function UserFeed() {
     <main className="md:px-4 xl:px-8 2xl:px-24 my-4 dark:text-white flex mb-16 xs:mb-0">
       <Sidebar />
       <div>
-        <SmartSearch />
+        <SmartSearch isLowMarginBottom={false} />
         <ul className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-4">
           {events.map((event, idx) => (
             <li key={idx}>

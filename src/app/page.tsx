@@ -37,7 +37,7 @@ export default async function LandingFeed() {
         </div>
       </div>
       <Separator className="my-6" />
-      <SmartSearch />
+      <SmartSearch isLowMarginBottom={true} />
       <ul className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-4">
         {events.map((event, idx) => (
           <li key={idx}>
