@@ -5,7 +5,7 @@ import { UserAvatar } from "@/components/UserAvatar";
 
 const Navbar = async () => {
   return (
-    <nav className="bg-gray-100 dark:bg-gray-900 py-4 px-6 flex items-center justify-between">
+    <nav className="bg-gray-50 dark:bg-gray-900 py-4 px-6 flex items-center justify-between">
       <div className="text-gray-800 dark:text-white text-xl font-bold">
         <Link href={"/"}>Connectoo</Link>
       </div>
