@@ -57,4 +57,4 @@ jobs:
 
       - name: Test
         run: |
-          pnpm run test
+          pnpm prisma generate && pnpm run test
