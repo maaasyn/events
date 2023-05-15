@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,8 +12,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { getCurrentUser } from "@/lib/session";
-import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { LogOut, PlusCircle, Github, User, Newspaper } from "lucide-react";
+import {
+  LogOutIcon,
+  PlusCircleIcon,
+  GithubIcon,
+  UserIcon,
+  NewspaperIcon,
+} from "lucide-react";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 
@@ -28,7 +33,7 @@ export const AvatarPopOver = (props: {
             <Avatar className="h-8 w-8">
               <AvatarImage src={props.user?.image!} alt="avatar" />
               <AvatarFallback>
-                <User />
+                <UserIcon />
               </AvatarFallback>
             </Avatar>
           </Button>
@@ -53,21 +58,21 @@ export const AvatarPopOver = (props: {
           <DropdownMenuGroup>
             <DropdownMenuItem asChild>
               <Link href={"/profile"}>
-                <User className="mr-2 h-4 w-4" />
+                <UserIcon className="mr-2 h-4 w-4" />
                 <span>Profile</span>
               </Link>
             </DropdownMenuItem>
 
             <DropdownMenuItem asChild>
               <Link href={"/feed"}>
-                <Newspaper className="mr-2 h-4 w-4" />
+                <NewspaperIcon className="mr-2 h-4 w-4" />
                 <span>Feed</span>
               </Link>
             </DropdownMenuItem>
 
             <DropdownMenuItem asChild>
               <Link href="/create-gather">
-                <PlusCircle className="mr-2 h-4 w-4" />
+                <PlusCircleIcon className="mr-2 h-4 w-4" />
                 <span>Create gathering</span>
               </Link>
             </DropdownMenuItem>
@@ -75,12 +80,12 @@ export const AvatarPopOver = (props: {
           <DropdownMenuSeparator />
           {!props.user ? (
             <DropdownMenuItem>
-              <Github className="mr-2 h-4 w-4" />
+              <GithubIcon className="mr-2 h-4 w-4" />
               <span onClick={() => signIn("github")}>Sign in</span>
             </DropdownMenuItem>
           ) : (
             <DropdownMenuItem>
-              <LogOut className="mr-2 h-4 w-4" />
+              <LogOutIcon className="mr-2 h-4 w-4" />
               <button onClick={() => signOut()}>Log out</button>
             </DropdownMenuItem>
           )}

@@ -34,7 +34,7 @@ const generateRandomEvent = (props?: { override: Event }): Event => {
 };
 
 export const getEvents = async () => {
-  const events = Array.from({ length: 20 }, () => generateRandomEvent());
+  const events = Array.from({ length: 24 }, () => generateRandomEvent());
   // TODO: Mocked events. Replace with real data.
   return events;
 };

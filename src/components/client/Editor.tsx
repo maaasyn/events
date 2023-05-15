@@ -32,6 +32,16 @@ export const Editor = () => {
         </BubbleMenu>
       )}
       <EditorContent editor={editor} />
+      <button
+        onClick={() =>
+          console.log({
+            html: editor?.getHTML(),
+            text: editor?.getText(),
+            json: editor?.getText(),
+          })
+        }>
+        Log
+      </button>
     </>
   );
 };
