@@ -80,8 +80,8 @@ export const FeedTile = (props: Event) => {
                 <Image
                   src={props.user.image}
                   alt={props.user.name}
-                  fill
-                  sizes="100vw"
+                  height={24}
+                  width={24}
                   style={{
                     objectFit: "cover",
                   }}
