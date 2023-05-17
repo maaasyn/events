@@ -25,8 +25,67 @@ const formSchema = z.object({
   tags: z.string().min(2),
   type: z.string().min(2),
   eventDuration: z.object({ from: z.date(), to: z.date().optional() }),
-  content: z.string().min(2),
 });
+
+const FormField = ({
+  children,
+  header,
+  paragraph,
+  className,
+}: React.PropsWithChildren & {
+  header: string;
+  paragraph: string;
+  className?: string;
+}) => {
+  return (
+    <div className="m-4 flex flex-row justify-between">
+      <div className="text-left w-1/3">
+        <h3 className="text-bold">{header}</h3>
+        <p className="text-sm">{paragraph}</p>
+      </div>
+      <div className="w-1/2 flex flex-col gap-10">
+        <div className={cn("flex flex-col items-start", className)}>
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Stepper = () => {
+  return (
+    <ol className="flex flex-row justify-around my-10">
+      <li className="flex flex-col items-center flex-grow relative">
+        <div className="w-8 h-8 z-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+          1
+        </div>
+        <p className="text-sm pt-2">Basics</p>
+        <div className="absolute h-0.5 bg-black w-1/2 right-0 top-4 transform -translate-y-1/2"></div>
+      </li>
+      <li className="flex flex-col items-center flex-grow relative">
+        <div className="w-8 h-8 z-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+          2
+        </div>
+        <p className="text-sm pt-2">Story</p>
+        <div className="absolute h-0.5 bg-black w-full left-0 right-0 top-4 transform -translate-y-1/2"></div>
+      </li>
+      <li className="flex flex-col items-center flex-grow relative">
+        <div className="w-8 h-8 z-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+          3
+        </div>
+        <p className="text-sm pt-2">Billing</p>
+        <div className="absolute h-0.5 bg-black w-full left-0 right-0 top-4 transform -translate-y-1/2"></div>
+      </li>
+      <li className="flex flex-col items-center flex-grow relative">
+        <div className="w-8 h-8 z-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+          4
+        </div>
+        <p className="text-sm pt-2">Final touches</p>
+        <div className="absolute h-0.5 bg-black w-1/2 left-0 top-4 transform -translate-y-1/2"></div>
+      </li>
+    </ol>
+  );
+};
 
 export const AddGathering = () => {
   const onSubmit = (formData: z.infer<typeof formSchema>) => {
@@ -42,119 +101,161 @@ export const AddGathering = () => {
     },
   });
 
-  const lala = form.register("title");
-
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)}>
-      <div>
-        <Label htmlFor="title">Title</Label>
-        <Input
-          {...form.register("title")}
-          type="text"
-          placeholder="Event title"
-        />
-      </div>
-      <div>
-        <Label htmlFor="description">Description:</Label>
-        <Textarea
-          type="text"
-          role="textbox"
-          id="description"
-          placeholder="Event description"
-          {...form.register("description")}
-        />
+    <div>
+      <Stepper />
+      <div className="py-6 bg-gray-50 my-8">
+        <h2 className="text-2xl font-bold text-center">
+          Start with the basics
+        </h2>
+        <h3 className="text-lg text-center">
+          Make it easy for people to learn about your project.
+        </h3>
       </div>
 
-      <Separator className="my-4" />
-
-      <div>
-        <Label htmlFor="location">Location:</Label>
-        <Input
-          type="text"
-          placeholder="Event location"
-          {...form.register("location")}
-        />
-      </div>
-      <Separator className="my-4" />
-      <div>
-        <Label htmlFor="tags">Tags:</Label>
-        <Input
-          type="text"
-          id="tags"
-          placeholder="Event tags"
-          {...form.register("tags")}
-        />
-      </div>
-
-      <div>
-        <Label htmlFor="type">Type:</Label>
-        <Input
-          type="text"
-          id="type"
-          placeholder="Event type"
-          {...form.register("type")}
-        />
-      </div>
-      <Separator className="my-4" />
-      <div>
-        <Label htmlFor="eventDuration">Event Duration:</Label>
-
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button
-              id="date"
-              variant={"outline"}
-              className={cn(
-                "w-[300px] justify-start text-left font-normal",
-                !form.getValues()?.eventDuration?.from &&
-                  "text-muted-foreground"
-              )}>
-              <CalendarIcon className="mr-2 h-4 w-4" />
-              {form.getValues()?.eventDuration?.from ? (
-                form.getValues()?.eventDuration?.to ? (
-                  <>
-                    {format(form.getValues().eventDuration.from, "LLL dd, y")} -{" "}
-                    {format(form.getValues().eventDuration?.to!, "LLL dd, y")}
-                  </>
-                ) : (
-                  format(form.getValues().eventDuration.from, "LLL dd, y")
-                )
-              ) : (
-                <span>Pick a date</span>
-              )}
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
-            <Controller
-              control={form.control}
-              name="eventDuration"
-              render={({ field }) => (
-                <Calendar
-                  onDayBlur={field.onBlur}
-                  mode="range"
-                  selected={field.value}
-                  onSelect={(d) => {
-                    console.log({ d });
-
-                    field.onChange(d);
-                  }}
-                />
-              )}
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <FormField
+          className={"gap-5 items-stretch"}
+          header="Project title"
+          paragraph="Write a clear, brief title and subtitle to help people quickly
+            understand your project. Both will appear on your project and
+            pre-launch pages. Potential backers will also see them if your
+            project appears on category pages, search results, or in emails we
+            send to our community.">
+          <div className="flex flex-col items-start">
+            <Label htmlFor="title" className="pb-2">
+              Title:
+            </Label>
+            <Input
+              {...form.register("title")}
+              id="title"
+              type="text"
+              placeholder="Event title"
             />
-          </PopoverContent>
-        </Popover>
-      </div>
+          </div>
+          <div className="flex flex-col items-start">
+            <Label htmlFor="description" className="pb-2">
+              Description:
+            </Label>
+            <Textarea
+              rows={5}
+              role="textbox"
+              id="description"
+              placeholder="Event description"
+              {...form.register("description")}
+            />
+          </div>
+        </FormField>
 
-      <div>
-        <Label htmlFor="content">Content:</Label>
-        <Textarea
-          placeholder="Event content"
-          id="content"
-          {...form.register("content")}
-        />
-      </div>
+        <Separator className="my-8" />
 
-      <Button type="submit">Add Gathering</Button>
-    </form>
+        <FormField
+          header="Project location"
+          paragraph="Enter the location that best describes where your project is based.">
+          <Label htmlFor="location" className="pb-2">
+            Location:
+          </Label>
+          <Input
+            {...form.register("location")}
+            id="location"
+            type="text"
+            placeholder="Event location"
+          />
+        </FormField>
+
+        <Separator className="my-8" />
+
+        <FormField
+          header="Project category"
+          paragraph="Choose a primary category and subcategory to help backers find your
+        project. Your second subcategory will help us provide more relevant
+        guidance for your project. It won’t display on your project page or
+        affect how it appears in search results. You can change these
+        anytime before and during your campaign."
+          className={"gap-5 items-stretch"}>
+          <div className="flex flex-col items-start">
+            <Label htmlFor="tags" className="pb-2">
+              Tags:
+            </Label>
+            <Input
+              {...form.register("tags")}
+              id="tags"
+              type="text"
+              placeholder="Event tags"
+            />
+          </div>
+          <div className="flex flex-col items-start">
+            <Label htmlFor="type" className="pb-2">
+              Type:
+            </Label>
+            <Input
+              {...form.register("type")}
+              id="type"
+              type="text"
+              placeholder="Event type"
+            />
+          </div>
+        </FormField>
+
+        <Separator className="my-8" />
+
+        <FormField
+          header="Event duration"
+          paragraph="Set a time limit for your campaign. You won’t be able to change this
+      after you launch.">
+          <Label htmlFor="eventDuration" className="pb-2">
+            Event Duration:
+          </Label>
+
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                id="date"
+                variant={"outline"}
+                className={cn(
+                  "w-[300px] justify-start text-left font-normal",
+                  !form.getValues()?.eventDuration?.from &&
+                    "text-muted-foreground"
+                )}>
+                <CalendarIcon className="mr-2 h-4 w-4" />
+                {form.getValues()?.eventDuration?.from ? (
+                  form.getValues()?.eventDuration?.to ? (
+                    <>
+                      {format(form.getValues().eventDuration.from, "LLL dd, y")}{" "}
+                      -{" "}
+                      {format(form.getValues().eventDuration?.to!, "LLL dd, y")}
+                    </>
+                  ) : (
+                    format(form.getValues().eventDuration.from, "LLL dd, y")
+                  )
+                ) : (
+                  <span>Pick a date</span>
+                )}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Controller
+                control={form.control}
+                name="eventDuration"
+                render={({ field }) => (
+                  <Calendar
+                    onDayBlur={field.onBlur}
+                    mode="range"
+                    selected={field.value}
+                    onSelect={(d) => {
+                      field.onChange(d);
+                    }}
+                  />
+                )}
+              />
+            </PopoverContent>
+          </Popover>
+        </FormField>
+
+        <Separator className="my-8" />
+
+        <Button type="submit">Next</Button>
+      </form>
+    </div>
   );
 };
