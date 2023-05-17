@@ -93,7 +93,7 @@ export default async function SpecificGathering(props: {
   const event = await getEvent(props.params.id);
 
   return (
-    <div className="flex flex-col items-center w-full bg-white dark:bg-gray-800 rounded-lg">
+    <main className="flex flex-col items-center w-full bg-white dark:bg-gray-800 rounded-lg">
       <EventCard {...event} />
       <div className="flex flex-row w-full xs:justify-evenly bg-gray-100 dark:bg-gray-900 p-4 overflow-x-auto">
         <h2 className="text-m text-gray-800 dark:text-white mr-4">Comments</h2>
@@ -112,7 +112,7 @@ export default async function SpecificGathering(props: {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
