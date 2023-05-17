@@ -8,7 +8,11 @@ import { Button } from "@/components/ui/button";
 
 export default async function LandingFeed() {
   const events = await getEvents();
-  const imageSrc = faker.image.abstract(600, 400);
+  const imageSrc = faker.image.urlLoremFlickr({
+    category: "abstract",
+    height: 400,
+    width: 600,
+  });
   return (
     <main className="px-4 xl:px-8 2xl:px-24 my-4 dark:text-white">
       <div className="grid grid-cols-[repeat(1,_minmax(0,_auto))] grid-rows-[repeat(3,_minmax(0,_auto))] md:grid-cols-[repeat(2,_minmax(0,_auto))] md:grid-rows-[repeat(2,_minmax(0,_auto))] items-center justify-center w-full bg-white dark:bg-gray-800">

@@ -16,11 +16,11 @@ import { Settings2Icon } from "lucide-react";
 
 const SearchBody = () => {
   return (
-    <div className="flex md:flex-row flex-col items-center my-4 flex-wrap gap-y-1">
+    <div className="flex md:flex-row flex-col items-end my-4 flex-wrap gap-y-1 w-fit m-auto">
       <div className="flex items-center">
         <p className="px-2">Show me</p>
         <Select>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-32">
             <SelectValue placeholder="All" />
           </SelectTrigger>
           <SelectContent>
@@ -33,7 +33,7 @@ const SearchBody = () => {
       <div className="flex items-center">
         <p className="px-2">from</p>
         <Select>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-32">
             <SelectValue placeholder="World" />
           </SelectTrigger>
           <SelectContent>
@@ -46,7 +46,7 @@ const SearchBody = () => {
       <div className="flex items-center">
         <p className="px-2">sorted by</p>
         <Select>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-32">
             <SelectValue placeholder="Magic" />
           </SelectTrigger>
           <SelectContent>

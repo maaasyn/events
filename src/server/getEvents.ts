@@ -17,17 +17,29 @@ export type Event = {
 
 const generateRandomEvent = (props?: { override: Event }): Event => {
   const result: Event = {
-    id: props?.override?.id ?? faker.datatype.uuid(),
+    id: props?.override?.id ?? faker.string.uuid(),
     title: props?.override?.title ?? faker.lorem.words(3),
     description: props?.override?.description ?? faker.lorem.words(10),
-    image: props?.override?.image ?? faker.image.abstract(400, 300, true),
+    image:
+      props?.override?.image ??
+      faker.image.urlLoremFlickr({
+        category: "abstract",
+        width: 400,
+        height: 300,
+      }),
     date: props?.override?.date ?? faker.date.future().toISOString(),
-    location: props?.override?.location ?? faker.address.city(),
-    attendees: props?.override?.attendees ?? faker.datatype.number(100),
+    location: props?.override?.location ?? faker.location.city(),
+    attendees: props?.override?.attendees ?? faker.number.int(100),
     user: {
-      id: props?.override?.user?.id ?? faker.datatype.uuid(),
-      name: props?.override?.user?.name ?? faker.name.fullName(),
-      image: props?.override?.user?.image ?? faker.image.abstract(20, 20),
+      id: props?.override?.user?.id ?? faker.string.uuid(),
+      name: props?.override?.user?.name ?? faker.person.fullName(),
+      image:
+        props?.override?.user?.image ??
+        faker.image.urlLoremFlickr({
+          category: "abstract",
+          width: 20,
+          height: 20,
+        }),
     },
   };
   return result;
