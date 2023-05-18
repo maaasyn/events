@@ -1,17 +1,18 @@
-import { AddGathering } from "@/components/client/AddGathering";
-import { getCurrentUser } from "@/lib/session";
-import { redirect } from "next/navigation";
+import { Button } from "@/components/ui/button";
 import React from "react";
+import { redirect } from "next/navigation";
 
 export default async function CreateGather() {
-  const user = await getCurrentUser();
-  if (!user) {
-    redirect("/login");
-  }
+  const addItem = async () => {
+    "use server";
+    redirect(
+      `/projects/${Math.random().toString(36).substring(7)}/edit/basics`
+    );
+  };
 
   return (
-    <main className="flex flex-col items-center p-4 md:w-3/4 w-full m-auto">
-      <AddGathering />
-    </main>
+    <form action={addItem}>
+      <Button type="submit">Create Gather</Button>
+    </form>
   );
 }

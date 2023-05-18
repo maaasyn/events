@@ -17,77 +17,20 @@ import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { Textarea } from "@/components/ui/textarea";
+import { Stepper } from "@/components/client/create-gather-steps/common/Stepper";
+import { FormField } from "@/components/client/create-gather-steps/common/FormField";
+import { getName } from "@/lib/getName";
 
 const formSchema = z.object({
   title: z.string().min(2),
-  description: z.string().min(2),
+  summary: z.string().min(2),
   location: z.string().min(2),
   tags: z.string().min(2),
   type: z.string().min(2),
   eventDuration: z.object({ from: z.date(), to: z.date().optional() }),
 });
 
-const FormField = ({
-  children,
-  header,
-  paragraph,
-  className,
-}: React.PropsWithChildren & {
-  header: string;
-  paragraph: string;
-  className?: string;
-}) => {
-  return (
-    <div className="m-4 flex flex-row justify-between">
-      <div className="text-left w-1/3">
-        <h3 className="text-bold">{header}</h3>
-        <p className="text-sm">{paragraph}</p>
-      </div>
-      <div className="w-1/2 flex flex-col gap-10">
-        <div className={cn("flex flex-col items-start", className)}>
-          {children}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Stepper = () => {
-  return (
-    <ol className="flex flex-row justify-around my-10">
-      <li className="flex flex-col items-center flex-grow relative">
-        <div className="w-8 h-8 z-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
-          1
-        </div>
-        <p className="text-sm pt-2">Basics</p>
-        <div className="absolute h-0.5 bg-black w-1/2 right-0 top-4 transform -translate-y-1/2"></div>
-      </li>
-      <li className="flex flex-col items-center flex-grow relative">
-        <div className="w-8 h-8 z-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
-          2
-        </div>
-        <p className="text-sm pt-2">Story</p>
-        <div className="absolute h-0.5 bg-black w-full left-0 right-0 top-4 transform -translate-y-1/2"></div>
-      </li>
-      <li className="flex flex-col items-center flex-grow relative">
-        <div className="w-8 h-8 z-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
-          3
-        </div>
-        <p className="text-sm pt-2">Billing</p>
-        <div className="absolute h-0.5 bg-black w-full left-0 right-0 top-4 transform -translate-y-1/2"></div>
-      </li>
-      <li className="flex flex-col items-center flex-grow relative">
-        <div className="w-8 h-8 z-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
-          4
-        </div>
-        <p className="text-sm pt-2">Final touches</p>
-        <div className="absolute h-0.5 bg-black w-1/2 left-0 top-4 transform -translate-y-1/2"></div>
-      </li>
-    </ol>
-  );
-};
-
-export const AddGathering = () => {
+export const Basics = () => {
   const onSubmit = (formData: z.infer<typeof formSchema>) => {
     console.log({ formData });
   };
@@ -100,6 +43,8 @@ export const AddGathering = () => {
       },
     },
   });
+
+  const { name } = getName(form);
 
   return (
     <div>
@@ -123,26 +68,26 @@ export const AddGathering = () => {
             project appears on category pages, search results, or in emails we
             send to our community.">
           <div className="flex flex-col items-start">
-            <Label htmlFor="title" className="pb-2">
+            <Label htmlFor={name("title")} className="pb-2">
               Title:
             </Label>
             <Input
               {...form.register("title")}
-              id="title"
+              id={name("title")}
               type="text"
               placeholder="Event title"
             />
           </div>
           <div className="flex flex-col items-start">
-            <Label htmlFor="description" className="pb-2">
-              Description:
+            <Label htmlFor={name("summary")} className="pb-2">
+              Summary:
             </Label>
             <Textarea
               rows={5}
               role="textbox"
-              id="description"
-              placeholder="Event description"
-              {...form.register("description")}
+              id={name("summary")}
+              placeholder="Event summary"
+              {...form.register("summary")}
             />
           </div>
         </FormField>
@@ -152,12 +97,12 @@ export const AddGathering = () => {
         <FormField
           header="Project location"
           paragraph="Enter the location that best describes where your project is based.">
-          <Label htmlFor="location" className="pb-2">
+          <Label htmlFor={name("summary")} className="pb-2">
             Location:
           </Label>
           <Input
             {...form.register("location")}
-            id="location"
+            id={name("location")}
             type="text"
             placeholder="Event location"
           />
@@ -185,12 +130,12 @@ export const AddGathering = () => {
             />
           </div>
           <div className="flex flex-col items-start">
-            <Label htmlFor="type" className="pb-2">
+            <Label htmlFor={name("type")} className="pb-2">
               Type:
             </Label>
             <Input
               {...form.register("type")}
-              id="type"
+              id={name("type")}
               type="text"
               placeholder="Event type"
             />
@@ -236,7 +181,7 @@ export const AddGathering = () => {
             <PopoverContent className="w-auto p-0" align="start">
               <Controller
                 control={form.control}
-                name="eventDuration"
+                name={"eventDuration"}
                 render={({ field }) => (
                   <Calendar
                     onDayBlur={field.onBlur}
