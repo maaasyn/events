@@ -5,6 +5,6 @@ services:
     env_file:
       - ./.env
     ports:
-      - 5432:5432 # not to conflict with other postgres
+      - 5431:5432 # not to conflict with other postgres
     volumes:
       - ./.data/postgres:/data/postgres

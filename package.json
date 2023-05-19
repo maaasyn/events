@@ -36,7 +36,6 @@
     "class-variance-authority": "0.6.0",
     "clsx": "1.2.1",
     "date-fns": "2.30.0",
-    "eslint": "8.40.0",
     "eslint-config-next": "13.4.3",
     "lucide-react": "0.219.0",
     "next": "13.4.3",
@@ -52,14 +51,17 @@
     "tailwind-merge": "1.12.0",
     "tailwindcss": "3.3.2",
     "tailwindcss-animate": "1.0.5",
-    "typescript": "5.1.0-dev.20230515",
     "zact": "0.0.2",
     "zod": "3.21.4"
   },
   "devDependencies": {
     "@hookform/devtools": "4.3.1",
     "@tailwindcss/typography": "0.5.9",
+    "@typescript-eslint/eslint-plugin": "5.59.6",
+    "@typescript-eslint/parser": "5.59.6",
+    "eslint": "8.40.0",
     "prettier": "2.8.8",
-    "prettier-plugin-tailwindcss": "0.3.0"
+    "prettier-plugin-tailwindcss": "0.3.0",
+    "typescript": "5.1.1-rc"
   }
 }

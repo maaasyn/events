@@ -10,7 +10,7 @@ export const UserCard = (props: {
     <div className="max-w-md mx-auto my-4 bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex">
         <Avatar className="h-8 w-8">
-          <AvatarImage src={user?.image!} alt="avatar" />
+          <AvatarImage src={user?.image ?? ""} alt="avatar" />
           <AvatarFallback>
             <UserIcon />
           </AvatarFallback>
