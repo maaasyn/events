@@ -116,7 +116,7 @@ export default async function SpecificGathering(props: {
   );
 }
 
-const getEvent = async (id: string) => {
+const getEvent = async (_id: string) => {
   const markdown = `# Ingens et tecta optaris munusque carituraque quodcumque
 
 ## Transitque oculis cubitoque quid tristique velantque creat

@@ -20,6 +20,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Stepper } from "@/components/client/create-gather-steps/common/Stepper";
 import { FormField } from "@/components/client/create-gather-steps/common/FormField";
 import { getName } from "@/lib/getName";
+import Link from "next/link";
 
 const formSchema = z.object({
   title: z.string().min(2),
@@ -30,7 +31,7 @@ const formSchema = z.object({
   eventDuration: z.object({ from: z.date(), to: z.date().optional() }),
 });
 
-export const Basics = () => {
+export const Basics = (props: { id: string }) => {
   const onSubmit = (formData: z.infer<typeof formSchema>) => {
     console.log({ formData });
   };
@@ -200,6 +201,9 @@ export const Basics = () => {
         <Separator className="my-8" />
 
         <Button type="submit">Next</Button>
+        <Button asChild variant="secondary">
+          <Link href={`/projects/${props.id}/edit/story`}>Go to next step</Link>
+        </Button>
       </form>
     </div>
   );

@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Stepper } from "@/components/client/create-gather-steps/common/Stepper";
@@ -12,13 +11,15 @@ import { FormField } from "@/components/client/create-gather-steps/common/FormFi
 import { getName } from "@/lib/getName";
 import { useEffect, useState } from "react";
 import ImageUpload from "@/components/client/create-gather-steps/common/ImageHanderThing";
+import Link from "next/link";
+import { Editor } from "@/components/client/Editor";
 
 const formSchema = z.object({
   description: z.string(),
   image: z.string(),
 });
 
-export const Story = () => {
+export const Story = (props: { id: string }) => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
   useEffect(() => {
@@ -66,44 +67,40 @@ export const Story = () => {
           can be penalized by the Facebook algorithm, 
           and decrease your chances of getting Kickstarter homepage and newsletter features.">
           <div className="flex flex-col items-start">
-            <Label htmlFor="description" className="pb-2">
-              Image: :
+            <Label htmlFor="image" className="pb-2">
+              Image:
             </Label>
-            <Input
-              {...form.register("image")}
-              id={form.register("image").name}
-              type="image"
-              placeholder="Event Image"
-            />
-          </div>
-        </FormField>
-        <FormField
-          className={"gap-5 items-stretch"}
-          header="Project description"
-          paragraph="Describe what you're raising funds to do, why you care about it, how you plan to make it happen, and who you are. Your description should tell backers everything they need to know. If possible, include images to show them what your project is all about and what rewards look like. Read more about telling your story">
-          <div className="flex flex-col items-start">
-            <Label htmlFor="description" className="pb-2">
-              Description:
-            </Label>
-            <Input
-              {...form.register("description")}
-              id={name("description")}
-              type="text"
-              placeholder="Event description"
-            />
+
+            <div>
+              <ImageUpload
+                id={form.register("image").name}
+                {...form.register("image")}
+                onImageUpload={handleImageUpload}
+              />
+              {selectedImage && (
+                <img src={URL.createObjectURL(selectedImage)} alt="Selected" />
+              )}
+            </div>
           </div>
         </FormField>
 
         <Separator className="my-8" />
 
-        <div>
-          <ImageUpload onImageUpload={handleImageUpload} />
-          {selectedImage && (
-            <img src={URL.createObjectURL(selectedImage)} alt="Selected" />
-          )}
+        <FormField
+          className={"gap-5 items-stretch"}
+          header="Project description"
+          paragraph="Describe what you're raising funds to do, why you care about it, how you plan to make it happen, and who you are. Your description should tell backers everything they need to know. If possible, include images to show them what your project is all about and what rewards look like. Read more about telling your story"></FormField>
+
+        <Separator className="my-8" />
+
+        <div className="w-full min-h-[10rem]">
+          <Editor />
         </div>
 
         <Button type="submit">Next</Button>
+        <Button asChild type="button" variant="secondary">
+          <Link href={`/projects/${props.id}/edit/basics`}>Back to basics</Link>
+        </Button>
       </form>
     </div>
   );
