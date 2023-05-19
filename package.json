@@ -38,7 +38,7 @@
     "date-fns": "2.30.0",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.3",
-    "lucide-react": "0.219.0",
+    "lucide-react": "0.220.0",
     "next": "13.4.3",
     "next-auth": "4.22.1",
     "next-mdx-remote": "4.4.1",
