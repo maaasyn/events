@@ -1,10 +1,10 @@
 import { getEvents } from "@/server/getEvents";
 import {
-  Clock,
-  CreditCard,
-  Globe,
+  ClockIcon,
+  CreditCardIcon,
+  GlobeIcon,
   Heart,
-  Home,
+  HomeIcon,
   Settings,
   User,
 } from "lucide-react";
@@ -21,11 +21,11 @@ const Sidebar = () => {
           </h2>
           <div className="flex flex-row xs:flex-col space-y-1">
             <button className="flex flex-col items-center justify-center w-full px-3 py-2 text-xs text-gray-700 hover:bg-gray-100 rounded-md md:flex-row md:items-center md:justify-start">
-              <Home className="w-5 h-5 xs:w-8 xs:h-8 md:mr-2 md:w-4 md:h-4" />
+              <HomeIcon className="w-5 h-5 xs:w-8 xs:h-8 md:mr-2 md:w-4 md:h-4" />
               Home
             </button>
             <button className="flex flex-col items-center justify-center w-full px-3 py-2 text-xs text-gray-700 hover:bg-gray-100 rounded-md md:flex-row md:items-center md:justify-start">
-              <Globe className="w-5 h-5 xs:w-8 xs:h-8 md:mr-2 md:w-4 md:h-4" />
+              <GlobeIcon className="w-5 h-5 xs:w-8 xs:h-8 md:mr-2 md:w-4 md:h-4" />
               Explore
             </button>
             <button className="flex flex-col items-center justify-center w-full px-3 py-2 text-xs text-gray-700 hover:bg-gray-100 rounded-md md:flex-row md:items-center md:justify-start">
@@ -40,12 +40,12 @@ const Sidebar = () => {
           </h2>
           <div className="space-y-1">
             <button className="flex flex-col items-center justify-center w-full px-3 py-2 text-xs text-gray-700 hover:bg-gray-100 rounded-md md:flex-row md:items-center md:justify-start">
-              <Clock className="w-8 h-8 md:mr-2 md:w-4 md:h-4" />
+              <ClockIcon className="w-8 h-8 md:mr-2 md:w-4 md:h-4" />
               History
             </button>
 
             <button className="flex flex-col items-center justify-center w-full px-3 py-2 text-xs text-gray-700 hover:bg-gray-100 rounded-md md:flex-row md:items-center md:justify-start">
-              <CreditCard className="w-8 h-8 md:mr-2 md:w-4 md:h-4" />
+              <CreditCardIcon className="w-8 h-8 md:mr-2 md:w-4 md:h-4" />
               Payment
             </button>
 
