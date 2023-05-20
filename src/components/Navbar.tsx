@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { UserAvatar } from "@/components/UserAvatar";
+import { CommandMenu } from "@/components/ui/command-menu";
 
 const Navbar = async () => {
   return (
@@ -11,7 +12,8 @@ const Navbar = async () => {
       </div>
       <div className="flex-grow mx-8">
         <div className="relative text-gray-600 dark:text-white">
-          <input
+          <CommandMenu />
+          {/* <input
             type="search"
             name="search"
             placeholder="Search for everything"
@@ -19,7 +21,7 @@ const Navbar = async () => {
           />
           <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">
             <FaSearch />
-          </button>
+          </button> */}
         </div>
       </div>
       {/* @ts-expect-error Server Component */}
