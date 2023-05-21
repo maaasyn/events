@@ -49,7 +49,7 @@ export const Basics = (props: { id: string }) => {
 
   return (
     <div>
-      <Stepper />
+      <Stepper activeStep={1} />
       <div className="py-6 bg-gray-50 my-8">
         <h2 className="text-2xl font-bold text-center">
           Start with the basics
