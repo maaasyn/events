@@ -35,8 +35,8 @@ dependencies:
     specifier: 1.0.3
     version: 1.0.3(@types/react-dom@18.2.4)(@types/react@18.2.7)(react-dom@18.2.0)(react@18.2.0)
   '@radix-ui/react-slot':
-    specifier: 1.0.1
-    version: 1.0.1(react@18.2.0)
+    specifier: 1.0.2
+    version: 1.0.2(@types/react@18.2.7)(react@18.2.0)
   '@t3-oss/env-nextjs':
     specifier: 0.3.1
     version: 0.3.1(typescript@5.1.1-rc)(zod@3.21.4)
