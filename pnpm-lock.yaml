@@ -163,8 +163,8 @@ devDependencies:
     specifier: 5.59.6
     version: 5.59.6(eslint@8.41.0)(typescript@5.1.1-rc)
   drizzle-kit:
-    specifier: 0.18.0
-    version: 0.18.0
+    specifier: 0.18.1
+    version: 0.18.1
   eslint:
     specifier: 8.41.0
     version: 8.41.0
@@ -2837,8 +2837,8 @@ packages:
       wordwrap: 1.0.0
     dev: true
 
-  /drizzle-kit@0.18.0:
-    resolution: {integrity: sha512-43oH0XNWJDfMmVtDVnW8OV+tIs3xXDb1MjdsDiv0a7unQAylr0hpGG0HD5uEPWSbt7oxBots+hnYWxo98D0KAg==}
+  /drizzle-kit@0.18.1:
+    resolution: {integrity: sha512-Oqie227W2Dd7FuqX4pvQWeClSvnoPCIn2cO9JueeLWZqj3tpdBhnbgt4nLHhBbOdWRlTLYwXnkTDW3hYym/gGQ==}
     hasBin: true
     dependencies:
       camelcase: 7.0.1
