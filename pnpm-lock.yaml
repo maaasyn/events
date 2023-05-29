@@ -84,8 +84,8 @@ dependencies:
     specifier: 2.30.0
     version: 2.30.0
   drizzle-orm:
-    specifier: 0.26.1
-    version: 0.26.1(@types/pg@8.10.1)(pg@8.11.0)(postgres@3.3.4)
+    specifier: 0.26.2
+    version: 0.26.2(@types/pg@8.10.1)(pg@8.11.0)(postgres@3.3.4)
   eslint-config-next:
     specifier: 13.4.4
     version: 13.4.4(eslint@8.41.0)(typescript@5.1.1-rc)
@@ -3054,13 +3054,14 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.26.1(@types/pg@8.10.1)(pg@8.11.0)(postgres@3.3.4):
-    resolution: {integrity: sha512-PgHPBJ4BUi/xWEjBbaYo4eiVC7hIwPtSEAVO3QuGMzLV+YwD2jPyV2Y7nvP1jHZlA4IV9wLmkcpicBO/255XFg==}
+  /drizzle-orm@0.26.2(@types/pg@8.10.1)(pg@8.11.0)(postgres@3.3.4):
+    resolution: {integrity: sha512-/iqKfPNgPu5hnmwDG65bNol6ClIC6NPJ86C5Tejx4Wn5CGDYfQEihM4bfqvHpVWjrEjhuAVOhDcA/bqadiK/hA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
       '@libsql/client': '*'
       '@neondatabase/serverless': '>=0.1'
+      '@opentelemetry/api': ^1.4.1
       '@planetscale/database': '>=1'
       '@types/better-sqlite3': '*'
       '@types/pg': '*'
@@ -3083,6 +3084,8 @@ packages:
       '@libsql/client':
         optional: true
       '@neondatabase/serverless':
+        optional: true
+      '@opentelemetry/api':
         optional: true
       '@planetscale/database':
         optional: true
