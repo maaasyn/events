@@ -84,8 +84,8 @@ dependencies:
     specifier: 2.30.0
     version: 2.30.0
   drizzle-orm:
-    specifier: 0.26.2
-    version: 0.26.2(@types/pg@8.10.1)(pg@8.11.0)(postgres@3.3.4)
+    specifier: 0.26.3
+    version: 0.26.3(@types/pg@8.10.1)(pg@8.11.0)(postgres@3.3.4)
   eslint-config-next:
     specifier: 13.4.4
     version: 13.4.4(eslint@8.41.0)(typescript@5.1.1-rc)
@@ -3054,8 +3054,8 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.26.2(@types/pg@8.10.1)(pg@8.11.0)(postgres@3.3.4):
-    resolution: {integrity: sha512-/iqKfPNgPu5hnmwDG65bNol6ClIC6NPJ86C5Tejx4Wn5CGDYfQEihM4bfqvHpVWjrEjhuAVOhDcA/bqadiK/hA==}
+  /drizzle-orm@0.26.3(@types/pg@8.10.1)(pg@8.11.0)(postgres@3.3.4):
+    resolution: {integrity: sha512-KefTFAXxFtBmDRZWgM71ucxUuDvNEiPgv0lg7qAPEfrQVfyzSz0ukUfNz2Ck4Pro6PEmYFJmA6oNQwwgENkk7g==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
