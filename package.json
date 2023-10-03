@@ -59,7 +59,7 @@
     "tailwindcss-animate": "1.0.6",
     "uuid": "9.0.0",
     "zact": "0.0.2",
-    "zod": "3.21.4"
+    "zod": "3.22.3"
   },
   "devDependencies": {
     "@hookform/devtools": "4.3.1",
